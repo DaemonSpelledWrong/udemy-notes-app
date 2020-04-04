@@ -1,3 +1,3 @@
-const name = require('./utils.js');
+const getNotes = require('./notes.js');
 
-console.log(name);
+getNotes();
