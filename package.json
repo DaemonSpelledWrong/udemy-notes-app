@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DaemonSpelledWrong/udemy-notes-app#readme",
   "dependencies": {
+    "chalk": "^4.0.0",
     "validator": "^13.0.0"
   }
 }
