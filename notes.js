@@ -22,6 +22,18 @@ const addNote = function (title, body) {
   };
 };
 
+const removeNote = function (title) {
+  const notes = loadNotes();
+  
+  if(notes.filter(note => note.title === title).length === 0) {
+    console.error(chalk.red("That note title doesn't currently exist."));
+    return [];
+  } else {
+    saveNotes(notes.filter(note => note.title !== title));
+    console.log(chalk.green(`Removed the note titled ${title}`));
+  };
+};
+
 const saveNotes = function (notes) {
   const newJSON = JSON.stringify(notes);
   fs.writeFileSync('notes.json', newJSON);
@@ -41,5 +53,6 @@ const loadNotes = function () {
 
 module.exports = {
   getNotes: getNotes,
-  addNote: addNote
+  addNote: addNote,
+  removeNote: removeNote
 };
