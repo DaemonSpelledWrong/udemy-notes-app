@@ -1,11 +1,11 @@
 const fs = require('fs');
 const chalk = require('chalk');
 
-const getNotes = function () {
+const getNotes = () => {
   console.log('Your notes...');
 };
 
-const addNote = function (title, body) {
+const addNote = (title, body) => {
   const notes = loadNotes();
   if(notes.filter(note => note.title === title).length > 0) {
     console.error(chalk.red('That title is already in use! Try a different title or delete the old one.'));
@@ -22,7 +22,7 @@ const addNote = function (title, body) {
   };
 };
 
-const removeNote = function (title) {
+const removeNote = (title) => {
   const notes = loadNotes();
   
   if(notes.filter(note => note.title === title).length === 0) {
@@ -34,12 +34,12 @@ const removeNote = function (title) {
   };
 };
 
-const saveNotes = function (notes) {
+const saveNotes = (notes) => {
   const newJSON = JSON.stringify(notes);
   fs.writeFileSync('notes.json', newJSON);
 };
 
-const loadNotes = function () {
+const loadNotes = () => {
   try {
     const dataBuffer = fs.readFileSync('notes.json');
     const dataJSON = dataBuffer.toString();
